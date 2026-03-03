@@ -18,5 +18,15 @@ st.info("💡 Nota: Asegúrate de tener el archivo Excel en la misma ruta antes 
 st.subheader("Tu resultado:")
 # ESTUDIANTE: Escribe tu código a continuación
 
+excelArchi = "reporte_financiero.xlsx"
+
+try:
+    df_excel = pd.read_excel(excelArchi)
+    st.dataframe(df_excel)
+except FileNotFoundError:
+    st.error(f"No se encontró el archivo {excelArchi}. Crea el archivo en la carpeta del proyecto.")
+except Exception as e:
+    st.error(f"Ocurrió un error leyendo el Excel: {e}")
+
 
 # st.dataframe(...)

@@ -20,5 +20,22 @@ st.subheader("Tu resultado:")
 # ESTUDIANTE: Escribe tu código a continuación
 # Recuerda usar la librería requests que ya está importada arriba
 
+url = "https://pokeapi.co/api/v2/pokemon?limit=10"
+
+try:
+	resp = requests.get(url, timeout=10)
+	if resp.status_code == 200:
+		data = resp.json()
+		results = data.get("results", [])
+		df_pokemon = pd.DataFrame(results)
+		st.dataframe(df_pokemon)
+	else:
+		st.error(f"Error en la petición: status {resp.status_code}")
+except requests.RequestException as e:
+	st.error(f"Error en la petición HTTP: {e}")
+except ValueError as e:
+	st.error(f"Error al parsear JSON: {e}")
+except Exception as e:
+	st.error(f"Ocurrió un error inesperado: {e}")
 
 # st.dataframe(...)

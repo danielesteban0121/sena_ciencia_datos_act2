@@ -17,7 +17,33 @@ MongoDB es una base de datos NoSQL muy popular que almacena la información de f
 st.subheader("Tu resultado:")
 st.markdown("Si no tienes la conexión real, escribe tu código usando `st.code()` para demostrar cómo lo harías teóricamente.")
 
+
 # ESTUDIANTE: Escribe tu código (o tu st.code teórico) a continuación
 
+st.code("""
+from pymongo import MongoClient
+import pandas as pd
+
+# Conexión al clúster (reemplazar con credenciales reales)
+cliente = MongoClient("mongodb+srv://<usuario>:<contraseña>@<cluster>.mongodb.net/?retryWrites=true&w=majority")
+
+# Seleccionar base de datos
+db = cliente["Veterinaria"]
+
+# Seleccionar colección
+coleccion = db["mascotas"]
+
+# Extraer documentos
+documentos = coleccion.find()
+
+# Convertir a lista
+lista_documentos = list(documentos)
+
+# Convertir a DataFrame
+df_mongo = pd.DataFrame(lista_documentos)
+
+# Mostrar resultados
+print(df_mongo.head())
+""")
 
 

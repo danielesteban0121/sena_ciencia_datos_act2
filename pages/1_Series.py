@@ -18,5 +18,16 @@ En este ejercicio debes crear un DataFrame agrupando información sobre **pelíc
 st.subheader("Tu resultado:")
 # ESTUDIANTE: Escribe tu código a continuación
 
+titulos = pd.Series(["la bella y bestia", "pinocho", "avatar", "wakanda"])
 
-# st.dataframe(...)
+directores = pd.Series(["ricardo dicaprio", "pitochico", "alma marlo goza", "pedro"])
+
+años = pd.Series([2020, 2003, 2010, 2025])
+
+df_peliculas = pd.DataFrame ({
+    "Nombre de pelicula" : titulos,
+    "Directores" : directores,
+    "Años" : años
+})
+
+st.dataframe(df_peliculas)
